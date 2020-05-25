@@ -6,3 +6,215 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/*
+Selector universal (*): seleccionará todos y cada uno de los elementos de la página y luegoaplicará estas declaraciones
+ */
+* {
+    margin: 0;
+    padding: 0;
+    /*
+    box-sizing: border-box: cambia el modelo del cuadro para que los border y los rellenos ya no se agreguen al ancho
+    total o a la altura
+    */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    /*line-height: N, N veces mas grande que la altura de linea predefinida*/
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    /* vh  la altura de este elemento debe de ser del 95% de la altura de la ventana gráfica*/
+    height: 95vh;
+    position: relative;
+    /* en este background tenemos dos images una ensima de la otra
+    linear-gradient el primer paramatro el sentido del degradado,hace un degradado del color 1 al color 2
+    */
+    background-image: linear-gradient(
+            to right bottom, rgba(126, 213, 111, 0.8),
+            rgba(40, 180, 133, 0.8)
+    ), url(../img/hero.jpg);
+    background-size: cover;
+    /*background-position hace que la imagen siempre permanezca en la parte que se le indica (top, bottom, etc)*/
+    background-position: top;
+    /* clip-path especificamos un poligono en el que la imagen o elemento seguira siendo visible
+    polygon(x y, x y, x y) recibe este orden de parametros para saber como sera el poligono, la primer cordenada estara
+    del lado izquierdo superopr y despues seguira el orden de las manecillas del reloj
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* Triangulos
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);*/
+}
+
+.header__logo-box{
+    /* La referencia que toma la posicion absoluta es del padre que tenga position relative, en este caso el padeo es el header*/
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.header__logo{
+    height: 35px;
+}
+
+/* La siguiente clase sera para centrar todo el contenido que este dentro del elemento, tanto horizontal como verticalmente*/
+.header__text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /*background-color: red;*/
+    /* Transform e permite modificar el espacio de coordenadas del modelo de formato visual CSS. Usándola, los
+    elementos pueden ser trasladados, rotados, escalados o sesgados de acuerdo a los valores establecidos.*/
+    /*translate es para especificar cuanto queremos traducir en "X" y "Y" en sus ejes
+    Esto hace que el 50% ya no este relacionado con el elemento padre, pero si del elemento en si*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.heading-primary{
+    color: #ffffff;
+    text-transform: uppercase;
+    /* Esto es porque en las animaciones aveces da un pequeño movimiento de mas que hace que se vea mal la animacion
+     esto corrige ese error, pero no se especifica bien en el curso el porque funciona*/
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+
+.heading-primary--main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    /* llama la animacion que creamos en la parte de abajo*/
+    animation-name: moveInLeft;
+    /*Especificamos cuanto timepo trabajara la animacion*/
+    animation-duration: 1s;
+    /*antes de que se ejecute la animacion espera el tiempo especificado*/
+    /*animation-delay: 1s;*/
+    /*Veces que se ejecutara la animacion*/
+    /*animation-iteration-count: 3;*/
+    /*define como procedera la animacion*/
+    animation-timing-function: ease-out;
+}
+
+.heading-primary--sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+    /*La linea de arriba sustituye las siguientes
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;*/
+}
+
+.btn:link, .btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn--white{
+    background-color: #fff;
+    color: #777;
+    padding: 15px 40px;
+    /*El contenido de esta caja es tratado como si fuera texto, lo cual permite que si el padre tiene un text-align se aplique al elemento*/
+    display: inline-block;
+}
+
+.btn--animated{
+    animation:  moveInBottom .5s ease-out .75s;
+    /* animation-fill-mode aplica los estilos de la animacion en 0% */
+    animation-fill-mode: backwards;
+}
+
+.btn::after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn--white::after{
+    background-color: #fff;
+
+}
+
+.btn--white:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+/* Para animaciones, especificamos el nombre de la animacion */
+@keyframes  moveInLeft{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+@keyframes  moveInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80%{
+        transform: translateX(-10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+
+@keyframes  moveInBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
