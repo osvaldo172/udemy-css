@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* Esta no estara en typography porque es la base para calcular 1rem en todo el sitio, lo cual lo hace global,
+ no para la tipografia del sitio*/
+html{
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

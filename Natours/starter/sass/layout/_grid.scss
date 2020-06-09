@@ -1,0 +1,55 @@
+.row {
+  //Uno de los estandares que se usa  en estos dias es convirtiendolo en una cuadricula de 1140px
+  max-width: $grid-width;
+  margin: 0 auto;
+
+  /*
+  La pseudo-clase :not() de CSS representa elementos que no coinciden con una lista de selectores.
+  Como evita que se seleccionen elementos específicos, se lo conoce como la pseudo-clase de negación.
+  Selecciona cualquier elemento que NO sea un párrafo
+    :not(p) {
+      color: blue;
+    }
+  */
+  &:not(:last-child){
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+  //^ para indicar que es donde debe de iniciar la coincidencia
+  //* sirve para indicar que la clase contenga la palabla exacta
+  //$ sirve para indicar que cualqueir clase que contenga palabla
+  //aplica el estilo para todos los elemtos que tengan esa coincidencia
+  [class^="col-"]{
+    float: left;
+    &:not(:last-child){
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  .col-1-of-2{
+    //el #{} es para que identifique la variable ya que esta dentro de una funcion
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-3{
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+
+  .col-2-of-3{
+    width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+  }
+
+  .col-1-of-4{
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-4{
+    width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+  }
+
+  .col-3-of-4{
+    width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal} * 2);
+  }
+}

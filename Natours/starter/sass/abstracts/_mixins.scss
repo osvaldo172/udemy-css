@@ -1,0 +1,8 @@
+@mixin clearfix {
+  &::after{
+    content: "";
+    //Permite asignar un comportamiento de tabla a los elementos que haya dentro
+    display: table;
+    clear: both;
+  }
+}

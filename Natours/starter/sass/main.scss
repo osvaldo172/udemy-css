@@ -1,0 +1,32 @@
+/*
+Se implementa la arquitectura 7-1
+Los archivos parciales siempre empiezan con guion bajo para importarlo no es necesario poner el guin bajo
+no la extencion scss */
+
+/*En el folder base condra los archivos base del proyecto, como animaciones, typografias, etc */
+/*En el folder abstracts vamos a poner todo el codigo que no gener css como las variables, mixin etc */
+/*En el folder components crearemos un archivo para cada uno de nuestros componentes, los componentes son bloques  de
+   construccion reutilizables que conforman nuestro sitio web o aplicacion, deben ser reutilziables en cualquier lugar
+   de la pagina, completamente independientes
+*/
+
+/*En el folder layout para las pieza del diseño global de todo el proyecto, footer, header, etc */
+/*En el folder pages para estilos muy especificos de cada pagina, por ejemplo una pagina de inicio */
+/*La arquitectura 7-1 tambien teiene una carpeta de themes para cuando se esta haciendo una pagina con varios temas */
+/*La arquitectura 7-1 tambien teiene una carpeta de vendor para css de terceros */
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/button";
+
+@import "layout/grid";
+@import "layout/header";
+
+@import "pages/home";

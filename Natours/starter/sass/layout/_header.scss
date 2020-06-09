@@ -1,0 +1,37 @@
+.header {
+  height: 95vh;
+  position: relative;
+  /* en css no podemos pasar el hexadecimal directo a la funcion rgba, pero sass si, incluso en una variable*/
+  background-image: linear-gradient(
+                  to right bottom, rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)
+  ), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  /* Con el "&" lo que hace es que se sustituye por .header asi podemos poner lo que tenemosmos en .header__logo-box*/
+  &__logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  &__logo{
+    height: 3.5rem;
+  }
+}
+
+/*.header__logo-box{
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}*/

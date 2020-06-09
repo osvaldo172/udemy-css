@@ -1,0 +1,5 @@
+/Natours/starter/node_modules/
+/Natours/starter/package-lock.json
+.idea
+_git
+git-completion.bash
