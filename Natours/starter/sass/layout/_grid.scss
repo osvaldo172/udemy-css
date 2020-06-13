@@ -19,7 +19,7 @@
 
   //^ para indicar que es donde debe de iniciar la coincidencia
   //* sirve para indicar que la clase contenga la palabla exacta
-  //$ sirve para indicar que cualqueir clase que contenga palabla
+  //$ sirve para indicar que cualquier clase que contenga palabra
   //aplica el estilo para todos los elemtos que tengan esa coincidencia
   [class^="col-"]{
     float: left;

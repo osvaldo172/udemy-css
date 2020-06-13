@@ -23,15 +23,11 @@
   }
 
   &--white{
-    background-color: $color-white;
-    color: $color-green-dark;
-    padding: 1.5rem 4rem;
-    display: inline-block;
+    @include btn-color($color-white,$color-green-dark);
+  }
 
-    &::after{
-      background-color: $color-white;
-
-    }
+  &--green{
+    @include btn-color($color-primary,$color-white);
   }
 
   &--animated{

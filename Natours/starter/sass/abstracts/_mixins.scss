@@ -6,3 +6,32 @@
     clear: both;
   }
 }
+
+@mixin background-gradient{
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  //Determina el area donde pinta el fondo
+  //con esto el fondo se recorta exactamente donde esta el texto
+  -webkit-background-clip: text;
+  //si no le ponemos el color transparent, no veremos el gradiente que genera background-image junto con -webkit-background-clip
+  color: transparent;
+}
+
+@mixin center-horizontal-vertical{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+@mixin btn-color($background-color, $color){
+  background-color: $background-color;
+  color: $color;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+
+  &::after{
+    background-color: $background-color;
+
+  }
+}

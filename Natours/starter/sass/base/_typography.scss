@@ -37,13 +37,7 @@ body {
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  display: inline-block;
-  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-  //Determina el area donde pinta el fondo
-  //con esto el fondo se recorta exactamente donde esta el texto
-  -webkit-background-clip: text;
-  //si no le ponemos el color transparent, no veremos el gradiente que genera background-image junto con -webkit-background-clip
-  color: transparent;
+  @include background-gradient;
   letter-spacing: .2rem;
   transition: all .2s;
   &:hover{
@@ -53,6 +47,8 @@ body {
     text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
   }
 }
+
+
 
 .heading-tertiary{
   font-size: $default-font-size;

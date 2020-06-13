@@ -8,6 +8,7 @@
   ), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   /* Con el "&" lo que hace es que se sustituye por .header asi podemos poner lo que tenemosmos en .header__logo-box*/
@@ -18,11 +19,7 @@
   }
 
   &__text-box{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    @include center-horizontal-vertical;
   }
 
   &__logo{
