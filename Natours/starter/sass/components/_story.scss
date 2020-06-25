@@ -1,0 +1,72 @@
+.story{
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: rgba($color-white, .60);
+  border-radius: 3px;
+  padding: 6rem 6rem 6rem 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  & > * {
+    transform: skewX(12deg);
+  }
+
+  &__shape{
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    /*La propiedad define una forma, que puede ser no rectangular, alrededor de la cual debe ajustarse el contenido en
+    línea adyacente. Por defecto, el contenido en línea se ajusta alrededor de su cuadro de margen; shape-outside
+    proporciona una forma de personalizar este ajuste, lo que hace posible ajustar el texto alrededor de objetos
+    complejos en lugar de cuadros simples.*/
+    //circle(radio at 50% 50%) at 50% 50% es el centro del circulo
+    //para que funcione en safari se necesita el -webkit-
+    //otra cosa que pide shape-outside para que funcione es que tengan width, height y float definidos
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    // proviene que una porción de un elemento se muestre definiendo una región de recorte para mostrarse, es decir,
+    // solo una parte especifica del elemento se mostrara
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
+
+  &__img{
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all .5s;
+  }
+
+  &__text{
+    transform: skewX(12deg);
+  }
+
+  &__caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    //transform: translateX(-4rem) scale(1);
+  }
+
+  &:hover &__img{
+    transform: translateX(-4rem) scale(1);
+    //hace que tenga opacidad la imagen y brightness lo vuelve mas obscuro
+    filter: blur(3px) brightness(80%);
+  }
+}
