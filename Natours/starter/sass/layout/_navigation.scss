@@ -1,0 +1,98 @@
+.navigation{
+  &__checkbox{
+    display: none;
+  }
+
+  &__button{
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 7rem;
+    right: 7rem;
+    border-radius: 50%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+  }
+
+  &__background{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    /*
+      line-gradient va de un lado al otro, mientras que radial-gradient comienza en el medio de un elemento y va desde
+      allí basicamente en todas las direcciones externas.
+    */
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    z-index: 1000;
+    //La función cubic-bezier es una función de tiempo de transición que se utiliza a menudo para las transiciones personalizadas y suaves.
+    transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
+    //transform: scale(80);
+  }
+
+  &__nav{
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+    opacity: 0;
+    width: 0;
+    transition: all .8s cubic-bezier(0.83, 0, 0.17, 1);
+  }
+
+  &__list{
+    @include center-horizontal-vertical;
+    list-style: none;
+    width: 100%;
+  }
+
+  &__item{
+    margin: 1rem;
+    counter-increment: list;
+  }
+
+  &__link{
+    &::before {
+      content: '0' counters(list, '');
+      padding-right: 1.2rem;
+    }
+    &:link, &:visited{
+      //sin el display inline-block no funcionaria el transform del hover y el active
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      background-size: 300%;
+      transition: all .4s;
+
+      span{
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover, &:active{
+      //background-position define la posición inicial de la imagen de fondo especificada.
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(2rem);
+    }
+  }
+
+  &__checkbox:checked ~ &__background{
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav{
+    opacity: 1;
+    width: 100%;
+  }
+}
